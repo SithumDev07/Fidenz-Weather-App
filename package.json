@@ -18,6 +18,7 @@
     "mongoose": "^6.4.2",
     "morgan": "~1.9.1",
     "nodemon": "^2.0.18",
-    "redis": "^4.2.0"
+    "redis": "^4.2.0",
+    "redisscan": "^2.0.0"
   }
 }
