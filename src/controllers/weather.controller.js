@@ -41,10 +41,3 @@ exports.getAll = async (req, res) => {
       })
     }
 }
-
-exports.navigateHome = async (req, res) => {
-  res.render('pages/index', {
-    title: "Auth0 Secured"
-  });
-  // res.send(req.oidc.isAuthenticated() ? "Logged In" : "Logged Out")
-}
