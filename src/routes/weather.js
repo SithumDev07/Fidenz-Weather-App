@@ -3,7 +3,7 @@ const weatherController = require('../controllers/weather.controller')
 
 router.get(
   '/',
-  weatherController.getAll
+  weatherController.navigateHome
 )
 
 

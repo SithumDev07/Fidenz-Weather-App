@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/head'); %>
+</head>
+<body class="container">
+
+<header>
+  <%- include('../partials/navbar', {
+    city: "Current Location"
+  }); %>
+</header>
+
+<main class="flex flex-wrap">
+  <% weatherData.forEach(function (data) { %>
+    <li class="weather-card margin-regular-bottom margin-regular-left">
+      <div class="weather-card-header flex items-center justify-between">
+        <p>Monday</p>
+        <div class="time">11.43 PM</div>
+      </div>
+      <!-- <%= data.id %> -->
+      <p class="temperature"><%= data.temp %>°</p>
+      <div class="flex items-center">
+        <i class="bi bi-geo-alt-fill"></i>
+        <p class="margin-regular-left text-sm">
+          <%= data.name %>
+        </p>
+      </div>
+      <p class="text-sm"><%= data.description[0] %></p>
+    </li>
+  <% }) %>
+</main>
+
+<footer>
+  <%- include('../partials/footer'); %>
+</footer>
+
+</body>
+</html>

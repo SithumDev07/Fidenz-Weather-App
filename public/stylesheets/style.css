@@ -1,8 +1,154 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
+
+:root {
+  --primary-color: #404040;
+  --secondary-color: #536390;
+  --font-color: #424242;
+  --bg-color: #fff;
+  --heading-color: #292922;
+  --weather-card-color: #BBD8EC;
+  --weather-card-header-color: #ADCADE;
 }
 
-a {
-  color: #00B7FF;
+[data-theme="dark"] {
+  --primary-color: #9A97F3;
+  --secondary-color: #818cab;
+  --font-color: #e1e1ff;
+  --bg-color: #161625;
+  --heading-color: #818cab;
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Reset CSS */
+li {
+  list-style: none;
+}
+
+/* Common CSS */
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.flex {
+  display: flex;
+  flex-direction: row;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.text-lg {
+  font-size: 1.25rem;
+  line-height: 1rem;
+}
+
+.text-sm {
+  font-size: 0.675rem;
+  line-height: 0.475rem;
+}
+
+.margin-regular-left {
+  margin-left: 0.6rem;
+}
+
+.margin-regular-bottom {
+  margin-bottom: 1rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+/* Component Based CSS */
+.navbar {
+  padding: 3rem 0rem;
+}
+
+.checkbox {
+  opacity: 0;
+  position: absolute;
+}
+
+.label {
+  width: 50px;
+  height: 26px;
+  background-color:#111;
+  display: flex;
+  border-radius:50px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  position: relative;
+  transform: scale(1.5);
+}
+
+.ball {
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  border-radius: 50%;
+  transition: transform 0.2s linear;
+}
+
+.checkbox:checked + .label .ball{
+  transform: translateX(24px);
+}
+
+.bi-moon-stars {
+  color: pink;
+}
+
+.bi-brightness-high {
+  color: yellow;
+}
+
+.weather-card {
+  background-color: var(--weather-card-color);
+  padding: 3rem 2rem 1rem 2rem;
+  border-radius: 0.75rem;
+  position: relative;
+  overflow: hidden;
+  min-height: 100px;
+}
+
+.weather-card-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  padding: 0.4rem 0.875rem;
+  background-color: var(--weather-card-header-color);
+}
+
+.temperature {
+  font-size: 3rem;
+  color: var(--primary-color);
+}
+
+/* Footer */
+.footer-text {
+  padding: 2rem 0;
 }
