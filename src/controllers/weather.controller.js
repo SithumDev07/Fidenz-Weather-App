@@ -23,7 +23,8 @@ exports.getAll = async (req, res) => {
       res.status(200)
 
       res.render('pages/index', {
-        weatherData: availableCachedItems
+        weatherData: availableCachedItems,
+        isAuthenticated: req.oidc.isAuthenticated() ? true : false
       })
     } else {
       const response = await axios({
@@ -37,7 +38,8 @@ exports.getAll = async (req, res) => {
       res.status(200)
 
       res.render('pages/index', {
-        weatherData: transformResponse(response.data)
+        weatherData: transformResponse(response.data),
+        isAuthenticated: req.oidc.isAuthenticated() ? true : false
       })
     }
 }

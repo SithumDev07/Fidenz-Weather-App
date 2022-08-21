@@ -11,6 +11,12 @@
   }); %>
 </header>
 
+<% if (isAuthenticated) { %>
+  <h1 class="greeting">Good Morning, <span class="user">FidenZ</span></h1>
+<% } else { %>
+  Unauthenticated
+<% } %>
+
 <main class="flex flex-wrap">
   <% weatherData.forEach(function (data) { %>
     <li class="weather-card margin-regular-bottom margin-regular-left">
@@ -20,13 +26,15 @@
       </div>
       <!-- <%= data.id %> -->
       <p class="temperature"><%= data.temp %>°</p>
-      <div class="flex items-center">
-        <i class="bi bi-geo-alt-fill"></i>
-        <p class="margin-regular-left text-sm">
-          <%= data.name %>
-        </p>
+      <div class="weather-card-footer margin-regular-top flex items-center justify-between">
+        <div class="flex items-center">
+          <i class="bi bi-geo-alt-fill"></i>
+          <p class="margin-regular-left text-sm">
+            <%= data.name %>
+          </p>
+        </div>
+        <p class="text-sm text-center"><%= data.description[0] %></p>
       </div>
-      <p class="text-sm"><%= data.description[0] %></p>
     </li>
   <% }) %>
 </main>

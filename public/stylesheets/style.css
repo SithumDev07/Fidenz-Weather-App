@@ -9,6 +9,7 @@
   --heading-color: #292922;
   --weather-card-color: #BBD8EC;
   --weather-card-header-color: #ADCADE;
+  --user-color: #CC4532;
 }
 
 [data-theme="dark"] {
@@ -70,6 +71,10 @@ li {
   margin-bottom: 1rem;
 }
 
+.margin-regular-top {
+  margin-top: 0.475rem;
+}
+
 .text-center {
   text-align: center;
 }
@@ -81,6 +86,14 @@ li {
 /* Component Based CSS */
 .navbar {
   padding: 3rem 0rem;
+}
+.greeting {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.user {
+  color: var(--user-color);
 }
 
 .checkbox {
@@ -126,11 +139,12 @@ li {
 
 .weather-card {
   background-color: var(--weather-card-color);
-  padding: 3rem 2rem 1rem 2rem;
+  padding: 3rem 1.4rem 1rem 1.4rem;
   border-radius: 0.75rem;
   position: relative;
   overflow: hidden;
   min-height: 100px;
+  min-width: 270px;
 }
 
 .weather-card-header {
