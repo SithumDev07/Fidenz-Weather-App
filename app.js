@@ -25,11 +25,20 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(auth(config))
 
-// app.use('/', require('./src/routes'));
-
-app.get('/', function (req, res) {
-    res.send(req.oidc.isAuthenticated())
+app.use(function(req, res, next) {
+    if(req.oidc.isAuthenticated()) {
+        res.status(200).redirect('/')
+        next()
+    }
+    console.log("Not Authenticated");
+    res.status(403).redirect('/login')
 })
+
+app.use('/', require('./src/routes'));
+
+// app.get('/', function (req, res) {
+//     res.send(req.oidc.isAuthenticated())
+// })
 
 app.set('trust proxy', true)
 
