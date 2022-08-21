@@ -5,10 +5,7 @@ const redis = require('redis')
 * 
 */
 exports.client = redis.createClient({
-    socket: {
-        host: process.env.REDIS_DB_HOST,
-        port: process.env.REDIS_DB_PORT
-    }
+    url: process.env.REDIS_URL,
 })
 
 // Connect the local redis store
