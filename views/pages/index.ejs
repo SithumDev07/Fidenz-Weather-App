@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/head'); %>
+</head>
+<body class="container">
+
+<header>
+  <%- include('../partials/navbar', {
+    city: "Current Location"
+  }); %>
+</header>
+
+<% if (isAuthenticated) { %>
+  <h1 class="greeting"><%= greeting %></h1>
+<% } else { %>
+  Unauthenticated
+<% } %>
+
+<main class="flex flex-wrap">
+  <% weatherData.forEach(function (data) { %>
+    <li class="weather-card margin-regular-bottom margin-regular-left">
+      <div class="weather-card-header flex items-center justify-between">
+        <p><%= timeAndDate.day %></p>
+        <div class="time"><%= timeAndDate.time %></div>
+      </div>
+      <!-- <%= data.id %> -->
+      <p class="temperature"><%= data.temp %>°</p>
+      <div class="weather-card-footer margin-regular-top flex items-center justify-between">
+        <div class="flex items-center">
+          <i class="bi bi-geo-alt-fill"></i>
+          <p class="margin-regular-left text-sm">
+            <%= data.name %>
+          </p>
+        </div>
+        <p class="text-sm text-center"><%= data.description[0] %></p>
+      </div>
+    </li>
+  <% }) %>
+</main>
+
+<footer>
+  <%- include('../partials/footer'); %>
+</footer>
+
+<script src="scripts/app.js"></script>
+
+</body>
+</html>

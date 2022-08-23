@@ -6,34 +6,35 @@
 
 const app = require('../app');
 const debug = require('debug')('server:server');
-const http = require('http');
+const fs = require('fs')
+const path = require('path')
+const https = require('https');
 const dotenv = require('dotenv');
 
 dotenv.config();
-
 
 /**
  * Get port from environment and store in Express.
  */
 
-const port = normalizePort(process.env.PORT || '3000');
+const port = normalizePort(process.env.PORT || '8080');
 app.set('port', port);
 
 /**
- * Create HTTP server.
+ * Create HTTPS server.
  */
-
-const server = http.createServer(app);
+ const currentPath = path.resolve(__dirname)
+const certifiedServer = https.createServer({
+  key: fs.readFileSync(path.join(currentPath, '/key.pem')),
+  cert: fs.readFileSync(path.join(currentPath, '/cert.pem'))
+}, app);
 
 /**
  * Listen on provided port, on all network interfaces.
  */
-
- server.listen(port);
- server.on('error', onError);
- server.on('listening', onListening);
-
-
+ certifiedServer.listen(port)
+ certifiedServer.on('error', onError);
+ certifiedServer.on('listening', onListening);
 
 /**
  * Normalize a port into a number, string, or false.
@@ -86,7 +87,7 @@ function onError(error) {
  */
 
 function onListening() {
-  const addr = server.address();
+  const addr = certifiedServer.address();
   const bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
