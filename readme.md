@@ -1,7 +1,19 @@
 # Fidenz Weather App
 
-1. Get Weather Data from the REST API
-2. Cache them one by one by using weather id
-3. Next get another request call from the client
-4. Check the items in the cache
-5. If there send from there, otherwise request the REST API again and cache them
+### Instructions to use
+
+Start
+
+    $ npm run start
+
+    $ yarn run start
+
+App is running on,
+
+    https://localhost:8080/weather
+
+### Requirements
+
+    * Redis Server
+    * Open Weather API Account
+    * Auth0 Account
