@@ -27,19 +27,15 @@ app.use(auth(config))
 
 app.use(function(req, res, next) {
     if(req.oidc.isAuthenticated()) {
-        res.status(200).redirect('/')
-        next()
+        return next()
     }
-    console.log("Not Authenticated");
-    res.status(403).redirect('/login')
+    res.redirect(401, '/login')
 })
 
 app.use('/', require('./src/routes'));
 
-// app.get('/', function (req, res) {
-//     res.send(req.oidc.isAuthenticated())
-// })
-
-app.set('trust proxy', true)
+app.get('*', function(req, res) {
+    res.redirect(200, '/weather')
+})
 
 module.exports = app;

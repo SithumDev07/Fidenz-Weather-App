@@ -3,6 +3,7 @@
 
 :root {
   --primary-color: #404040;
+  --background-color: #ffffff;
   --secondary-color: #536390;
   --font-color: #424242;
   --bg-color: #fff;
@@ -10,14 +11,23 @@
   --weather-card-color: #BBD8EC;
   --weather-card-header-color: #ADCADE;
   --user-color: #CC4532;
+  --toggle-color: #111;
+  --ball-color: #fff;
+  --location-text-color: #404040;
+  --footer-text-color: #111;
 }
 
 [data-theme="dark"] {
-  --primary-color: #9A97F3;
+  --background-color: #0f0f0f;
+  --primary-color: #5d58f0;
   --secondary-color: #818cab;
   --font-color: #e1e1ff;
   --bg-color: #161625;
   --heading-color: #818cab;
+  --toggle-color: #fff;
+  --ball-color: #111;
+  --location-text-color: #ffffff;
+  --footer-text-color: #ffffff;
 }
 
 
@@ -31,6 +41,10 @@
 /* Reset CSS */
 li {
   list-style: none;
+}
+
+body {
+  background-color: var(--background-color);
 }
 
 /* Common CSS */
@@ -87,9 +101,15 @@ li {
 .navbar {
   padding: 3rem 0rem;
 }
+
+.location {
+  color: var(--location-text-color);
+}
+
 .greeting {
   font-size: 2rem;
   margin-bottom: 2rem;
+  color: var(--user-color);
 }
 
 .user {
@@ -104,7 +124,7 @@ li {
 .label {
   width: 50px;
   height: 26px;
-  background-color:#111;
+  background-color: var(--toggle-color);
   display: flex;
   border-radius:50px;
   align-items: center;
@@ -117,7 +137,7 @@ li {
 .ball {
   width: 20px;
   height: 20px;
-  background-color: white;
+  background-color: var(--ball-color);
   position: absolute;
   top: 2px;
   left: 2px;
@@ -130,11 +150,11 @@ li {
 }
 
 .bi-moon-stars {
-  color: pink;
+  color: rgba(255, 208, 0, 0.996);
 }
 
 .bi-brightness-high {
-  color: yellow;
+  color: rgba(253, 253, 2, 0.963);
 }
 
 .weather-card {
@@ -165,4 +185,5 @@ li {
 /* Footer */
 .footer-text {
   padding: 2rem 0;
+  color: var(--footer-text-color);
 }

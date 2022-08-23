@@ -3,6 +3,7 @@ const fs = require('fs')
 const path = require('path');
 const { transformResponse, weatherDataTransformer, citiesJsonTransformer } = require('../util/transformers')
 const { saveInCache, alreadyInCacheItems } = require('../util/cache.manager')
+const { getCurrentDayAndTime, getGreeting } =require('../util/date.functions')
 
 /* 
 * 
@@ -12,7 +13,7 @@ exports.getAll = async (req, res) => {
 
   const currentPath = path.resolve(__dirname)
 
-  const rawData = fs.readFileSync(path.join(currentPath, '../db/cities.json'))
+  const rawData = fs.readFileSync(path.join(currentPath, '../db/cities.json'));
 
     const cityCodes = citiesJsonTransformer(JSON.parse(rawData).List)
 
@@ -24,7 +25,9 @@ exports.getAll = async (req, res) => {
 
       res.render('pages/index', {
         weatherData: availableCachedItems,
-        isAuthenticated: req.oidc.isAuthenticated() ? true : false
+        isAuthenticated: req.oidc.isAuthenticated() ? true : false,
+        timeAndDate: getCurrentDayAndTime(),
+        greeting: getGreeting()
       })
     } else {
       const response = await axios({
@@ -39,7 +42,9 @@ exports.getAll = async (req, res) => {
 
       res.render('pages/index', {
         weatherData: transformResponse(response.data),
-        isAuthenticated: req.oidc.isAuthenticated() ? true : false
+        isAuthenticated: req.oidc.isAuthenticated() ? true : false,
+        timeAndDate: getCurrentDayAndTime(),
+        greeting: getGreeting()
       })
     }
 }

@@ -12,7 +12,7 @@
 </header>
 
 <% if (isAuthenticated) { %>
-  <h1 class="greeting">Good Morning, <span class="user">FidenZ</span></h1>
+  <h1 class="greeting"><%= greeting %></h1>
 <% } else { %>
   Unauthenticated
 <% } %>
@@ -21,8 +21,8 @@
   <% weatherData.forEach(function (data) { %>
     <li class="weather-card margin-regular-bottom margin-regular-left">
       <div class="weather-card-header flex items-center justify-between">
-        <p>Monday</p>
-        <div class="time">11.43 PM</div>
+        <p><%= timeAndDate.day %></p>
+        <div class="time"><%= timeAndDate.time %></div>
       </div>
       <!-- <%= data.id %> -->
       <p class="temperature"><%= data.temp %>°</p>
@@ -42,6 +42,8 @@
 <footer>
   <%- include('../partials/footer'); %>
 </footer>
+
+<script src="scripts/app.js"></script>
 
 </body>
 </html>
